@@ -25,7 +25,6 @@ class solve:
         self.z = [-1, -1, self.num_unassign]
         return self.z
 
-
     def is_safe(self, e, f, g):
         for self.a in range(0, self.SIZE):
             if self.matrix[f][a] == e:
@@ -40,7 +39,6 @@ class solve:
                 if self.matrix[a][b] == e:
                     return False
         return True
-
 
     def solve_sudoku():
         self.row = 0
@@ -57,9 +55,10 @@ class solve:
                 return True
             self.matrix[row][col] = 0
     return False
+
     def print_class(self):
         for self.a in self.matrix:
             print(self.a)
-obj=solve()
+obj = solve()
 obj.solve_sudoku()
 obj.print_class()
