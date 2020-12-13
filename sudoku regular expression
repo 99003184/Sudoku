@@ -1,0 +1,75 @@
+class details:
+        print("Enter your name:player")
+        name = input()
+        import re
+        x = "ushareddy@gmail.com"
+        r1 = re.match("[[a-z]+@[a-z]+.[a-z]+", x)
+
+
+class solve:
+    SIZE = 9
+    matrix = [
+            [6, 5, 0, 8, 7, 3, 0, 9, 0],
+            [0, 0, 3, 2, 5, 0, 0, 0, 8],
+            [9, 8, 0, 1, 0, 4, 3, 5, 7],
+            [1, 0, 5, 0, 0, 0, 0, 0, 0],
+            [4, 0, 0, 0, 0, 0, 0, 0, 2],
+            [0, 0, 0, 0, 0, 0, 5, 0, 3],
+            [5, 7, 8, 3, 0, 1, 0, 2, 6],
+            [2, 0, 0, 0, 4, 8, 9, 0, 0],
+            [0, 9, 0, 6, 2, 5, 0, 8, 1]
+            ]
+
+    def number_unassigned(self, row, col):
+        num_unassign = 0
+        for a in range(0, self.SIZE):
+            for b in range(0, self.SIZE):
+                if self.matrix[a][b] == 0:
+                    self.row = a
+                    self.col = b
+                    num_unassign = 1
+                    self.z = [self.row, self.col, num_unassign]
+                    return self.z
+        self.z = [-1, -1, num_unassign]
+        return self.z
+
+    def is_safe(self, e, f, g):
+        for self.a in range(0, self.SIZE):
+            if self.matrix[f][self.a] == e:
+                return False
+        for self.a in range(0, self.SIZE):
+            if self.matrix[self.a][g] == e:
+                return False
+        row_start = (f//3)*3
+        col_start = (g//3)*3
+        for self.a in range(row_start, row_start+3):
+            for self.b in range(col_start, col_start+3):
+                if self.matrix[self.a][self.b] == e:
+                    return False
+        return True
+
+    def solve_sudoku(self):
+        row = 0
+        col = 0
+        z = self.number_unassigned(row, col)
+        if z[2] == 0:
+            return True
+        row = z[0]
+        col = z[1]
+        for a in range(1, 10):
+            if self.is_safe(a, row, col):
+                self.matrix[row][col] = a
+                if self.solve_sudoku():
+                    return True
+                self.matrix[row][col] = 0
+        return False
+
+    def print_class(self):
+        for self.a in self.matrix:
+            print(self.a) 
+obj = solve()
+obj.solve_sudoku()
+obj.print_class()
+obj1 = details()
+print(obj1.name)
+print(obj1.r1)
